@@ -1,0 +1,8 @@
+Scaffold-DbContext "server=localhost;port=3306;database=Administration;user=root;password=Vofox@12345" Pomelo.EntityFrameworkCore.MySql -OutputDir ../Administration.Domain/Entities -ContextDir Persistence -Context AdministrationDbContext -Project Administration.Infrastructure -StartupProject Administration.API -Force
+
+
+
+Mysql DB Backup: 
+Powershell > Change Directory > Locate MySQL bin > apply this
+
+ & "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqldump.exe" -u root -p administration > "D:\Test\JamathTool\JamathTool\DB Backup\administration_backup.sql"
