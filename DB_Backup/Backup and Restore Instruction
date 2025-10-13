@@ -1,0 +1,30 @@
+Backup and Restore from Windows -> Ubuntu
+-----------------------------------------
+Windows Powershell : 
+
+mysqldump --default-character-set=utf8 --routines --triggers --events ^
+-u root -p Administration > "D:\DB_Backup\administration_backup.sql"
+
+Restore in Ubuntu:
+
+file /path/to/Backup_file/administration_backup.sql
+
+mysql -u root -p administration < /path/to/Backup_file/administration_backup.sql
+
+===============================================
+
+Backup and Restore from Ubuntu -> Windows
+-----------------------------------------
+
+Ubuntu:
+
+mysqldump --default-character-set=utf8 --routines --triggers --events \
+-u root -p administration > ~/Ppath/to/Backup_file/administration_backup.sql
+
+Windows Powershell:
+
+mysql --default-character-set=utf8 -u root -p Administration < "D:\DB_Backup\administration_backup.sql"
+
+mysql -u root -p -e "USE administration; SHOW TABLES;"
+
+
