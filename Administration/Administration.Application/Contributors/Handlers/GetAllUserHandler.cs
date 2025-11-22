@@ -20,7 +20,6 @@ namespace Administration.Application.Contributors.Handlers
         public async Task<List<UserResponseDto>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
             var users = await _userRepository.GetAllAsync(cancellationToken);
-            
             return _mapper.Map<List<UserResponseDto>>(users);
         }
     }

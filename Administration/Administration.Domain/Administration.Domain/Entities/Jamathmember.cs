@@ -18,4 +18,7 @@ public partial class Jamathmember
     public DateTime CreatedDate { get; set; }
 
     public DateTime ModifiedDate { get; set; }
+
+    public Jamathperiod Jamath { get; set; } = null!;
+    public User User { get; set; } = null!;
 }

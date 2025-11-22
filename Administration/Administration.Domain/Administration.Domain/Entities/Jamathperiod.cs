@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Administration.Domain.Entities;
+﻿namespace Administration.Domain.Entities;
 
 public partial class Jamathperiod
 {
     public int Id { get; set; }
 
-    public DateOnly FromDate { get; set; }
+    public DateTime FromDate { get; set; }
 
-    public DateOnly ToDate { get; set; }
+    public DateTime ToDate { get; set; }
 
     public DateTime CreateDate { get; set; }
 
     public DateTime ModifiedDate { get; set; }
+
+    public ICollection<Jamathmember> Members { get; set; } = new List<Jamathmember>();
 }

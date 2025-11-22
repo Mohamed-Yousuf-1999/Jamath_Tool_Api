@@ -1,5 +1,7 @@
 Scaffold-DbContext "server=localhost;port=3306;database=Administration;user=root;password=Vofox@12345" Pomelo.EntityFrameworkCore.MySql -OutputDir ../Administration.Domain/Entities -ContextDir Persistence -Context AdministrationDbContext -Project Administration.Infrastructure -StartupProject Administration.API -Force
 
+dotnet ef migrations add InitialCodeFirstSetup --project Administration.Infrastructure --startup-project Administration.API
+dotnet ef database update --project Administration.Infrastructure --startup-project Administration.API
 
 
 Mysql DB Backup: 

@@ -24,8 +24,8 @@ namespace Administration.Application
 
             var configuration = new MapperConfiguration(cfg =>
             {
-                //cfg.AddProfile<ContributorProfile>();
                 cfg.AddMaps(typeof(UserProfile).Assembly);
+                cfg.AddMaps(typeof(JamathProfile).Assembly);
 
             }, loggerFactory);
 

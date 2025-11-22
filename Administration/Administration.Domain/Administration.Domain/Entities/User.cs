@@ -33,8 +33,10 @@ public partial class User
 
     public string? Gender { get; set; }
 
-    public DateTime CreateDate { get; set; }
+    public DateTime CreateDate { get; set; } = DateTime.Now;
 
-    public DateTime ModifiedDate { get; set; }
+    public DateTime ModifiedDate { get; set; } = DateTime.Now;
     public string? PhotoPath { get; set; } 
+
+    public ICollection<Jamathmember> Jamathmembers { get; set; } = new List<Jamathmember>();
 }

@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using Administration.Domain.Entities;
-using Administration.Infrastructure;
+﻿using Administration.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
 
 namespace Administration.Infrastructure.Persistence;
 
 public partial class AdministrationDbContext : DbContext
 {
-    private readonly IConfiguration configuration;
+    private readonly IConfiguration _configuration;
 
     public AdministrationDbContext()
     {
     }
 
-    public AdministrationDbContext(DbContextOptions<AdministrationDbContext> options, IConfiguration configuration)
+    public AdministrationDbContext(DbContextOptions<AdministrationDbContext> options)
         : base(options)
     {
-        this.configuration = configuration;
     }
 
     public virtual DbSet<Jamathmember> Jamathmembers { get; set; }
@@ -29,7 +24,7 @@ public partial class AdministrationDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseMySql(configuration.GetConnectionString("AdministrationConnection") , Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.43-mysql"));
+        => optionsBuilder.UseMySql(_configuration.GetConnectionString("AdministrationConnection"), Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.43-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -72,10 +67,12 @@ public partial class AdministrationDbContext : DbContext
             entity.Property(e => e.CreateDate)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("timestamp");
+            entity.Property(e => e.FromDate).HasColumnType("datetime");
             entity.Property(e => e.ModifiedDate)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("timestamp");
+            entity.Property(e => e.ToDate).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<User>(entity =>

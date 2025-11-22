@@ -17,6 +17,7 @@ namespace Administration.Infrastructure
             ));
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IJamathRepository, JamathRepository>();
 
             return services;
         }
